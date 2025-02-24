@@ -167,3 +167,41 @@ btnAnimals.addEventListener('click', function() {
         }
     }
 });
+
+/* 
+
+the below code is not necessary to the assignment, i'm just 
+learning how to use js
+thought i'd tool around a bit
+
+*/
+
+function changeColors() {
+    const buttonColor = document.querySelectorAll('.filter-buttons button');
+    for (let i = 0; i < buttonColor.length; i++) {
+        buttonColor[i].style.backgroundColor = 'purple';
+    }
+}
+
+changeColors (); 
+
+function loadColor () {
+    const loadPink = document.querySelectorAll('.load-more button')
+    for (let i=0; i < loadPink.length; i++) {
+        loadPink[i].style.backgroundColor = 'pink';
+    }
+}
+
+loadColor ();
+
+const loadMoreBtn = document.querySelector('.load-more button');
+
+/* classList.add adds css classes to a DOM element */
+
+loadMoreBtn.addEventListener('mouseover', function() {
+    loadMoreBtn.classList.add('hover-animate');
+}); 
+
+loadMoreBtn.addEventListener('mouseout', function() {
+    loadMoreBtn.classList.remove('hover-animate');
+});
