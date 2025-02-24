@@ -49,4 +49,14 @@ const photos = [
     },
 ];
 
+// manipulate DOM to get gallery element 
 const newGallery = document.getElementById('gallery');
+
+/* use forEach method to go through every object in the photos array
+ => runs through every photo */
+photos.forEach(photo => {
+
+    /* create a new img element for each photo
+     creates a new img element in DOM */
+    const img = document.createElement('img');
+});
