@@ -49,14 +49,61 @@ const photos = [
     },
 ];
 
+/*
+
+----------STEP ONE-------------
+
+*/ 
+
 // manipulate DOM to get gallery element 
 const newGallery = document.getElementById('gallery');
 
+// mistakes lol
+
 /* use forEach method to go through every object in the photos array
  => runs through every photo */
-photos.forEach(photo => {
+// photos.forEach(photo => {
+//     /* create a new img element for each photo
+//      creates a new img element in DOM */
+//     const img = document.createElement('img');
+//     /* set src and alt for each img element in the array
+//     this loops over the photos array and automatically creates an img element
+//     urls are changeable without having to rewrite code */
+//     img.src = photo.url;
+//     // filtering images by type (ie nature)
+//     img.alt = photo.type; 
+//     /* append the img element to gallery container 
+//     and return the newly appended node */ 
+//     newGallery.appendChild(img);
+// });
 
-    /* create a new img element for each photo
-     creates a new img element in DOM */
-    const img = document.createElement('img');
-});
+/* 
+-------------- STEP TWO ---------------
+*/
+
+// var that tells how many photos to be visible
+let currentIndex = 6;
+
+function loadMore() {
+    newGallery.innerHTML = "";
+    /* slice returns a shallow copy of a portion of an array
+    into a new array
+    this slice is from 0-currentIndex which is set at 6
+    so only 6 imgs show at a time */ 
+    const photosToShow = photos.slice(0, currentIndex);
+    
+    photosToShow.forEach(photo => {
+        // creating img element
+        const img = document.createElement('img');
+        // transferable urls
+        img.src = photo.url;
+        // sorting types, ie 'nature'
+        img.alt = photo.type;
+        // appends the element created in doc.createEl 
+        newGallery.appendChild(img);
+    }); 
+}
+
+// call loadMore function
+loadMore(); 
+
