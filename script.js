@@ -107,3 +107,63 @@ function loadMore() {
 // call loadMore function
 loadMore(); 
 
+// call all button
+const btnAll = document.getElementById('all');
+
+// add eventlistener for user click
+btnAll.addEventListener('click', function() {
+    /* when the loadMore function slices 
+    the array, it takes all available photos */
+    currentIndex = photos.length;
+    loadMore();
+});
+
+const btnLoadMore = document.getElementById('loadMore');
+
+btnLoadMore.addEventListener('click', function() {
+    currentIndex += 6;
+    loadMore(); 
+}); 
+
+const btnNature = document.getElementById('nature');
+const btnCity = document.getElementById('city');
+const btnAnimals = document.getElementById('animals');
+
+btnNature.addEventListener('click', function() {
+    //clear
+    newGallery.innerHTML = "";
+    for (let i = 0; i < photos.length; i++) {
+        if (photos[i].type === "nature") {
+            const img = document.createElement('img');
+            img.src = photos[i].url;
+            img.alt = photos[i].type;
+            newGallery.appendChild(img);
+        }
+    }
+});
+
+btnCity.addEventListener('click', function() {
+    //clear
+    newGallery.innerHTML = "";
+    for (let i = 0; i < photos.length; i++) {
+        if (photos[i].type === "city") {
+            const img = document.createElement('img');
+            img.src = photos[i].url;
+            img.alt = photos[i].type;
+            newGallery.appendChild(img);
+        }
+    }
+});
+
+btnAnimals.addEventListener('click', function() {
+    //clear
+    newGallery.innerHTML = "";
+    for (let i = 0; i < photos.length; i++) {
+        if (photos[i].type === "animals") {
+            const img = document.createElement('img');
+            img.src = photos[i].url;
+            img.alt = photos[i].type;
+            newGallery.appendChild(img);
+        }
+    }
+});
