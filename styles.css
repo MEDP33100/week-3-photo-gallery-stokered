@@ -80,6 +80,16 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-.load-more button:hover {
+/* .load-more button:hover {
     background-color: #218838;
+} */
+
+@keyframes hoverPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+
+.hover-animate {
+    animation: hoverPulse 3s infinite alternate-reverse;
 }

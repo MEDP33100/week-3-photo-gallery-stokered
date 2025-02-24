@@ -49,4 +49,159 @@ const photos = [
     },
 ];
 
-console.log('hello');
+/*
+
+----------STEP ONE-------------
+
+*/ 
+
+// manipulate DOM to get gallery element 
+const newGallery = document.getElementById('gallery');
+
+// mistakes lol
+
+/* use forEach method to go through every object in the photos array
+ => runs through every photo */
+// photos.forEach(photo => {
+//     /* create a new img element for each photo
+//      creates a new img element in DOM */
+//     const img = document.createElement('img');
+//     /* set src and alt for each img element in the array
+//     this loops over the photos array and automatically creates an img element
+//     urls are changeable without having to rewrite code */
+//     img.src = photo.url;
+//     // filtering images by type (ie nature)
+//     img.alt = photo.type; 
+//     /* append the img element to gallery container 
+//     and return the newly appended node */ 
+//     newGallery.appendChild(img);
+// });
+
+/* 
+-------------- STEP TWO ---------------
+*/
+
+// var that tells how many photos to be visible
+let currentIndex = 6;
+
+function loadMore() {
+    newGallery.innerHTML = "";
+    /* slice returns a shallow copy of a portion of an array
+    into a new array
+    this slice is from 0-currentIndex which is set at 6
+    so only 6 imgs show at a time */ 
+    const photosToShow = photos.slice(0, currentIndex);
+    
+    photosToShow.forEach(photo => {
+        // creating img element
+        const img = document.createElement('img');
+        // transferable urls
+        img.src = photo.url;
+        // sorting types, ie 'nature'
+        img.alt = photo.type;
+        // appends the element created in doc.createEl 
+        newGallery.appendChild(img);
+    }); 
+}
+
+// call loadMore function
+loadMore(); 
+
+// call all button
+const btnAll = document.getElementById('all');
+
+// add eventlistener for user click
+btnAll.addEventListener('click', function() {
+    /* when the loadMore function slices 
+    the array, it takes all available photos */
+    currentIndex = photos.length;
+    loadMore();
+});
+
+const btnLoadMore = document.getElementById('loadMore');
+
+btnLoadMore.addEventListener('click', function() {
+    currentIndex += 6;
+    loadMore(); 
+}); 
+
+const btnNature = document.getElementById('nature');
+const btnCity = document.getElementById('city');
+const btnAnimals = document.getElementById('animals');
+
+btnNature.addEventListener('click', function() {
+    //clear
+    newGallery.innerHTML = "";
+    for (let i = 0; i < photos.length; i++) {
+        if (photos[i].type === "nature") {
+            const img = document.createElement('img');
+            img.src = photos[i].url;
+            img.alt = photos[i].type;
+            newGallery.appendChild(img);
+        }
+    }
+});
+
+btnCity.addEventListener('click', function() {
+    //clear
+    newGallery.innerHTML = "";
+    for (let i = 0; i < photos.length; i++) {
+        if (photos[i].type === "city") {
+            const img = document.createElement('img');
+            img.src = photos[i].url;
+            img.alt = photos[i].type;
+            newGallery.appendChild(img);
+        }
+    }
+});
+
+btnAnimals.addEventListener('click', function() {
+    //clear
+    newGallery.innerHTML = "";
+    for (let i = 0; i < photos.length; i++) {
+        if (photos[i].type === "animals") {
+            const img = document.createElement('img');
+            img.src = photos[i].url;
+            img.alt = photos[i].type;
+            newGallery.appendChild(img);
+        }
+    }
+});
+
+/* 
+
+the below code is not necessary to the assignment, i'm just 
+learning how to use js
+thought i'd tool around a bit
+
+*/
+
+function changeColors() {
+    const buttonColor = document.querySelectorAll('.filter-buttons button');
+    for (let i = 0; i < buttonColor.length; i++) {
+        buttonColor[i].style.backgroundColor = 'purple';
+    }
+}
+
+changeColors (); 
+
+function loadColor () {
+    const loadPink = document.querySelectorAll('.load-more button')
+    for (let i=0; i < loadPink.length; i++) {
+        loadPink[i].style.backgroundColor = 'pink';
+    }
+}
+
+loadColor ();
+
+const loadMoreBtn = document.querySelector('.load-more button');
+
+/* classList.add adds css classes to a DOM element */
+
+loadMoreBtn.addEventListener('mouseover', function() {
+    loadMoreBtn.classList.add('hover-animate');
+}); 
+
+loadMoreBtn.addEventListener('mouseout', function() {
+    loadMoreBtn.classList.remove('hover-animate');
+});
