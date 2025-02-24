@@ -49,4 +49,4 @@ const photos = [
     },
 ];
 
-console.log('hello');
+const newGallery = document.getElementById('gallery');
